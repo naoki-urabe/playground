@@ -31,7 +31,6 @@ func exportPEMStrToPrivateKey(privateKeyPem string) *rsa.PrivateKey {
 }
 
 func main() {
-	fmt.Println(rand.Reader)
 	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	publicKey := privateKey.Public()
 	privateKeyPemStr := exportPrivateKeyAsPEMStr(privateKey)
@@ -56,7 +55,6 @@ func main() {
 	})
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 		fmt.Println(claims["foo"], claims["nbf"])
-		fmt.Println("SUCCESS")
 	} else {
 		fmt.Println(err)
 	}
