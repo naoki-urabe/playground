@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  go:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.go
+    tty: true
+    volumes:
+      - .:/app
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    env_file: ./.env.dev.db
