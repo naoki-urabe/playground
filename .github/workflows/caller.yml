@@ -3,6 +3,9 @@ on:
 
 jobs:
   call-reusable-workflow:
+    # 作成したreusable workflowへのpathを指定し、reusable workflowをチェックアウトします
     uses: naoki-urabe/playground/.github/workflows/reusable-workflow.yml@master
     with:
-      name: "Mike"
+      first_name: "John"
+    secrets:
+      last_name: "Connor"

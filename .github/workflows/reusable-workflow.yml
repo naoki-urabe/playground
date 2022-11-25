@@ -1,12 +1,15 @@
 on:
   workflow_call:
     inputs:
-      name:
+      first_name:
         required: true
         type: string
+    secrets:
+      last_name: ${{ secrets.last_name }}
+
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
       - name: print name
-        run: echo "I'm" ${{ inputs.name }}
+        run: echo "I'm" ${{ inputs.name }} ${{ secrets.last_name }}
