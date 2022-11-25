@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print name
-        run: echo "I'm" ${{ inputs.first_name }}
+        run: echo "I'm" ${{ inputs.first_name }} ${{ secrets.last_name }}
