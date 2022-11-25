@@ -5,7 +5,8 @@ on:
         required: true
         type: string
     secrets:
-      last_name: ${{ secrets.last_name }}
+      last_name:
+        required: true
 
 jobs:
   reusable_workflow_job:
