@@ -5,6 +5,7 @@ jobs:
   call-reusable-workflow:
     # 作成したreusable workflowへのpathを指定し、reusable workflowをチェックアウトします
     uses: naoki-urabe/playground/.github/workflows/reusable-workflow.yml@master
+    # 引数、secretをreusable workflowへ渡します 
     with:
       first_name: "John"
     secrets:

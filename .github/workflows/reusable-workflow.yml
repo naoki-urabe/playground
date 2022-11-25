@@ -1,11 +1,16 @@
 on:
   workflow_call:
+    # reusable workflowへの引数を設定します。
     inputs:
       first_name:
+        # 引数が必須であるかを設定します
         required: true
+        # 引数の型を設定します
         type: string
+    # secret情報を渡します
     secrets:
       last_name:
+        # secretが必須であるかを設定します
         required: true
 
 jobs:
@@ -13,4 +18,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print name
+        # 引数、secretは以下の記述で読み込めます
         run: echo "I'm" ${{ inputs.first_name }} ${{ secrets.last_name }}
