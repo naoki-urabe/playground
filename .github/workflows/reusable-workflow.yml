@@ -1,4 +1,5 @@
 on:
+  # reusable workflowは発動トリガーにworkflow_callを指定します
   workflow_call:
     # reusable workflowへの引数を設定します。
     inputs:
