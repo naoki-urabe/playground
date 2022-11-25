@@ -3,15 +3,17 @@ on:
     # reusable workflowへの引数を設定します。
     inputs:
       first_name:
+        # 引数が渡ってこなかったときのデフォルト値を設定できます
+        default: "nobita"
         # 引数が必須であるかを設定します
-        required: true
+        required: false
         # 引数の型を設定します
         type: string
     # secret情報を渡します
     secrets:
       last_name:
         # secretが必須であるかを設定します
-        required: true
+        required: false
 
 jobs:
   reusable_workflow_job:
