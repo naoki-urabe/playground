@@ -6,7 +6,7 @@ import (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
-	threads, err := data.Threads()
+	/* threads, err := data.Threads()
 	if err == nil {
 		_, err := session(w, r)
 		public_tmpl_files := []string{"templates/layout.html",
@@ -22,6 +22,15 @@ func index(w http.ResponseWriter, r *http.Request) {
 			templates = template.Must(template.ParseFiles(private_tmpl_files...))
 		}
 		templates.ExecuteTemplate(w, "layout", threads)
+	}*/
+	threads, err := data.Threads()
+	if err == nil {
+		_, err := session(writer, request)
+		if err != nil {
+			generateHTML(writer, threads, "layout", "public.navbar", "index")
+		} else {
+			generateHTML(writer, threads, "layout", "private.navbar", "index")
+		}
 	}
 }
 

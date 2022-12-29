@@ -1,0 +1,2 @@
+FROM postgres:15.1-bullseye
+COPY ../data/setup.sql /docker-entrypoint-initdb.d
