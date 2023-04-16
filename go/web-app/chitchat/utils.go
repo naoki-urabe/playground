@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/naoki-urabe/playground/go/web-app/chitchat/data"
 	"html/template"
 )
 

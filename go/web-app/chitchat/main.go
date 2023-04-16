@@ -1,11 +1,12 @@
 package main
 
 import (
+	"github.com/naoki-urabe/playground/go/web-app/chitchat/data"
 	"html/template"
 	"net/http"
 )
 
-func index(w http.ResponseWriter, r *http.Request) {
+func index(writer http.ResponseWriter, request *http.Request) {
 	/* threads, err := data.Threads()
 	if err == nil {
 		_, err := session(w, r)
