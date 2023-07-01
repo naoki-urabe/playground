@@ -16,9 +16,38 @@ resource "aws_instance" "web" {
   instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.book_public.id
   tags = {
-    Name = "HelloWorld"
+    Name = "web"
   }
   key_name               = "develop"
-  vpc_security_group_ids = [aws_security_group.ingress-all.id]
-  user_data              = file("./install_apache.sh")
+  vpc_security_group_ids = [aws_security_group.web-sg.id]
+  user_data              = file("./init.sh")
+  provisioner "file" {
+    source      = "./echoServer.js"
+    destination = "/home/ubuntu/echoServer.js"
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("/home/nao_e/.ssh/develop-aws")
+      host        = self.public_ip
+    }
+  }
+  provisioner "file" {
+    source      = "~/.ssh/develop-aws"
+    destination = "/home/ubuntu/develop-aws"
+    connection {
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("~/.ssh/develop-aws")
+    }
+  }
+}
+resource "aws_instance" "db" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  subnet_id     = aws_subnet.book_private.id
+  tags = {
+    Name = "db"
+  }
+  key_name               = "develop"
+  vpc_security_group_ids = [aws_security_group.db-sg.id]
 }
