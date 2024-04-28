@@ -40,6 +40,17 @@ resource "aws_instance" "web" {
       private_key = file("~/.ssh/develop-aws")
     }
   }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod 600 /home/ubuntu/develop-aws"
+    ]
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      host = aws_instance.web.public_ip
+      private_key = file("~/.ssh/develop-aws")
+    }
+  }
 }
 resource "aws_instance" "db" {
   ami           = data.aws_ami.ubuntu.id
