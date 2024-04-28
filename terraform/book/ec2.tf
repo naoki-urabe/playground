@@ -45,9 +45,9 @@ resource "aws_instance" "web" {
       "chmod 600 /home/ubuntu/develop-aws"
     ]
     connection {
-      type = "ssh"
-      user = "ubuntu"
-      host = aws_instance.web.public_ip
+      type        = "ssh"
+      user        = "ubuntu"
+      host        = aws_instance.web.public_ip
       private_key = file("~/.ssh/develop-aws")
     }
   }
