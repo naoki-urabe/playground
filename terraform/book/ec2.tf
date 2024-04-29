@@ -61,4 +61,9 @@ resource "aws_instance" "db" {
   }
   key_name               = "develop"
   vpc_security_group_ids = [aws_security_group.db-sg.id]
+  user_data              = file("./db-setup.sh")
 }
+
+# resource "aws_eip" "web" {
+#  instance = aws_instance.web.id
+# }
