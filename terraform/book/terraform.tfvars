@@ -1,1 +1,0 @@
-ssh_key_file = "~/.ssh/develop-aws"
